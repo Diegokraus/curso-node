@@ -6,17 +6,13 @@ app.get('/', (req, res) => {
     res.send('Hello test')
 })
 
-app.get('/user', (req, res) => {
+app.get('/user/:name/lastname/:lastname', (req, res) => {
     res.send({
-        name: 'John Doe',
+        name: req.params.name,
+        lastname: req.params.lastname
     })
 })
 
-app.delete('/user', (req, res) => {
-    res.send({
-        name: 'John DELETADO',
-    })
-})
 
 app.listen(8080, () => {
     console.log('Server is running...')
