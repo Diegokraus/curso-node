@@ -1,17 +1,11 @@
 import express from 'express';
+import { userRouter } from './modules/user/user.controller.js';
+import { productRouter } from './modules/product/product.controller.js';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello teste');
-});
-
-app.get('/user/:name/lastname/:lastname', (req, res) => {
-  res.send({
-    name: req.params.name,
-    lastname: req.params.lastname,
-  });
-});
+app.use(userRouter);
+app.use(productRouter);
 
 app.listen(8080, () => {
   console.log('Server is running...');
